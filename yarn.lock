@@ -6066,6 +6066,14 @@ react-inspector@^2.2.2:
     babel-runtime "^6.26.0"
     is-dom "^1.0.9"
 
+react-memoize@./react-memoize-0.0.1.tgz:
+  version "0.0.1"
+  resolved "./react-memoize-0.0.1.tgz#a8ffda9a155041497042f965408aa0d3193fed87"
+  dependencies:
+    memoize-one "^3.0.1"
+    memoize-state "^1.1.3"
+    prop-types "15.5.10"
+
 react-modal@^3.1.10:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.2.1.tgz#fa8f76aed55b67c22dcf1a1c15b05c8d11f18afe"
