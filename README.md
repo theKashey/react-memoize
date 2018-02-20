@@ -21,7 +21,9 @@ Component memoization for React! Based on [Dan Abramov's tweet](https://twitter.
 Memoize get `compute` function, add passes all the other props to it, streaming result to the render prop.
 
 React-memoize uses [memoize-state](https://github.com/theKashey/memoize-state) underneath to perform __MobX__ like memozation
-and achive the maximal minimal level of memoization cache misses.
+and achive the maximal minimal level of memoization cache misses. Sounds a bit strange, but this mean - react-memoize will try to preserve the current `state` at all costs. From 10% to 50% "more" in comparison.
+
+> In all the cases only ONE! result is memoized. The goal of the component is to cut off updates.
 
 For example:
 
