@@ -2,6 +2,7 @@
 [![CircleCI status](https://img.shields.io/circleci/project/github/theKashey/react-memoize/master.svg?style=flat-square)](https://circleci.com/gh/theKashey/react-focus-lock/tree/master)
 
 Component memoization for React! Based on [Dan Abramov's tweet](https://twitter.com/dan_abramov/status/965378278461755392) :)
+Could change the way you did `componentWillReceiveProps`, could remember how your React Tree grow, could make things better.
 
 [![NPM](https://nodei.co/npm/react-memoize.png?downloads=true&stars=true)](https://nodei.co/npm/react-memoize/)
 
@@ -42,7 +43,9 @@ This is like Redux without dispatching. State in context, selector aka mapStateT
 ## About
 
 React-memoize uses [memoize-state](https://github.com/theKashey/memoize-state) underneath to perform __MobX__ like memozation
-and achive the maximal minimal level of memoization cache misses.
+and achive the maximal minimal level of memoization cache misses. Sounds a bit strange, but this mean - react-memoize will try to preserve the current `state` at all costs. From 10% to 50% "more" in comparison.
+
+> In all the cases only ONE! result is memoized. The goal of the component is to cut off updates.
 
 For example:
 
