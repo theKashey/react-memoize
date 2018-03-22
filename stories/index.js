@@ -22,8 +22,8 @@ class Test1 extends Component {
     list: new Array(50).fill(1).map((x, index) => index)
   };
 
-  componentDidMount(){
-    setInterval(()=>this.setState({generation: this.state.generation+1}), 1000);
+  componentDidMount() {
+    setInterval(() => this.setState({generation: this.state.generation + 1}), 1000);
   }
 
   decC = () => this.setState(({count}) => ({count: count - 1}));
@@ -40,11 +40,31 @@ class Test1 extends Component {
           list={this.state.list}
           count={this.state.count}
           generation={this.state.generation}
+
           compute={({list, count}) => heavyFunction(list, count)}
         >{
           ({list, time}) => (
             <div>
-              render #{this.state.generation}, updated {Math.round((Date.now() - time)/1000)} seconds ago
+              render #{this.state.generation}, updated {Math.round((Date.now() - time) / 1000)} seconds ago
+              <ul>
+                {list.map(x => <li key={x}>{x}</li>)}
+              </ul>
+            </div>
+          )
+        }
+        </Memoize>
+
+        <Memoize
+          list={this.state.list}
+          count={this.state.count}
+          generation={this.state.generation}
+
+          compute={({list, count}) => heavyFunction(list, count)}
+          pure
+        >{
+          ({list, time}) => (
+            <div>
+              render #{this.state.generation}, updated {Math.round((Date.now() - time) / 1000)} seconds ago
               <ul>
                 {list.map(x => <li key={x}>{x}</li>)}
               </ul>

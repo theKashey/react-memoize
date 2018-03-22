@@ -22,5 +22,7 @@
 
     // Turn off https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default-member.md
     "import/no-named-as-default-member": 0,
+
+    "react/forbid-prop-types": "off"
   }
 }
