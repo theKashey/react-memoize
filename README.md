@@ -38,6 +38,19 @@ import {MemoizeContext} from 'react-memoize';
     </MemoizeContext>
 </Context.Provider>
 ``` 
+`consumer` could be any "context"-compatible Component - React.context, create-react-context or unstated.
+All the additional props will be passed down to consumer. 
+
+It is better to explain using example.
+```js
+<MemoizeContext consumer={Consumer} prop1={1} anotherProp={3} selector={select}> />
+
+// will result
+
+<Consumer prop1={1} anotherProp={3}>
+{ contextValues => <ReactMemoize {...contextValues} compute={selector}>...</ReactMemoize>}
+</Consumer>
+```
 
 This is like Redux without dispatching. State in context, selector aka mapStateToProps, and magic memoization in between.
 

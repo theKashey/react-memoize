@@ -52,8 +52,8 @@ const createMemoizer = memoizationFunction => (
 export const MemoizeOne = createMemoizer(memoizeOne);
 export const MemoizeState = createMemoizer(memoizeState);
 
-export const MemoizeContext = ({ consumer: Consumer, selector, pure, children }) => (
-  <Consumer>
+export const MemoizeContext = ({ consumer: Consumer, selector, pure, children, ...rest }) => (
+  <Consumer {...rest}>
     {values =>
       (<MemoizeState {...values} compute={selector} pure={pure}>
         {result => children(result)}
