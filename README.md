@@ -5,6 +5,8 @@
 Component memoization for React! Based on [Dan Abramov's tweet](https://twitter.com/dan_abramov/status/965378278461755392) :)
 Could change the way you did `componentWillReceiveProps`, could remember how your React Tree grow, could make things better.
 
+> IE11+, React 15 and React 16.3 compatible.
+
 [![NPM](https://nodei.co/npm/react-memoize.png?downloads=true&stars=true)](https://nodei.co/npm/react-memoize/)
 
 ```js

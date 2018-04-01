@@ -68,6 +68,7 @@
   "dependencies": {
     "memoize-one": "^3.0.1",
     "memoize-state": "^1.3.3",
-    "prop-types": "15.5.10"
+    "prop-types": "15.5.10",
+    "react-lifecycles-compat": "^1.1.0"
   }
 }

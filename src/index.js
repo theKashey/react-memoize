@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import polyfill from 'react-lifecycles-compat';
 
 import memoizeState from 'memoize-state';
 import memoizeOne from 'memoize-one';
 
-const createMemoizer = memoizationFunction => (
+const createMemoizer = (memoizationFunction) => {
   class Memoize extends Component {
     static propTypes = {
       children: PropTypes.func.isRequired,
@@ -35,10 +36,6 @@ const createMemoizer = memoizationFunction => (
       });
     }
 
-    componentWillReceiveProps(newProps) {
-      this.setState(Memoize.getDerivedStateFromProps(newProps, this.state));
-    }
-
     shouldComponentUpdate(nextProps, nextState) {
       return !nextProps.pure || nextState.changed;
     }
@@ -47,7 +44,10 @@ const createMemoizer = memoizationFunction => (
       return this.props.children(this.state.result);
     }
   }
-);
+
+  polyfill(Memoize);
+  return Memoize;
+};
 
 export const MemoizeOne = createMemoizer(memoizeOne);
 export const MemoizeState = createMemoizer(memoizeState);
@@ -74,6 +74,6 @@ MemoizeContext.defaultProps = {
 };
 
 
-const MemoizeDefault = typeof Proxy !== 'undefined' ? MemoizeState : MemoizeOne;
+const MemoizeDefault = MemoizeState;
 
 export default MemoizeDefault;
