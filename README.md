@@ -56,6 +56,8 @@ It is better to explain using example.
 
 This is like Redux without dispatching. State in context, selector aka mapStateToProps, and magic memoization in between.
 
+__See it in action ->__ https://codesandbox.io/s/xjz5y3wzrz 🛠
+
 ## About
 
 React-memoize uses [memoize-state](https://github.com/theKashey/memoize-state) underneath to perform __MobX__ like memozation
