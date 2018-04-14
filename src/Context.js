@@ -1,13 +1,14 @@
 import React from 'react';
-import MemoizeState from './Memoizer';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import MemoizedState from './Memoizer';
+
 
 export const MemoizeContext = ({ consumer: Consumer, selector, pure, children, ...rest }) => (
   <Consumer {...rest}>
     {values =>
-      (<MemoizeState {...values} compute={selector} pure={pure}>
+      (<MemoizedState {...values} compute={selector} pure={pure}>
         {result => children(result)}
-      </MemoizeState>)
+      </MemoizedState>)
     }
   </Consumer>
 );

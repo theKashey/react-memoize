@@ -1,12 +1,12 @@
-import MemoizeDefault, {MemoizeOne, MemoizeState} from './Memoizer'
-import {MemoizeContext} from "./Context";
-import {MemoizedFlow} from "./Waterflow";
+import MemoizeDefault, { MemoizeOne, MemoizeState } from './Memoizer';
+import { MemoizeContext } from './Context';
+import { MemoizedFlow } from './Waterflow';
 
 export {
   MemoizeOne,
   MemoizeState,
   MemoizeContext,
-  MemoizedFlow
+  MemoizedFlow,
 };
 
 export default MemoizeDefault;

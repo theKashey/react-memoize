@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import polyfill from 'react-lifecycles-compat';
 
@@ -17,23 +17,22 @@ const createMemoizer = (memoizationFunction) => {
       pure: false,
     };
 
-    state = {
-      calculateResult: memoizationFunction(this.props.compute),
-    };
-
     static getDerivedStateFromProps(props, state) {
-      const { calculateResult, result: oldResult } = state;
+      const { calculateResult } = state;
       const { children, compute, pure, ...rest } = props;
       const result = state.calculateResult(rest);
-      const changed = oldResult !== result;
       return {
         calculateResult,
         result,
       };
     }
 
+    state = {
+      calculateResult: memoizationFunction(this.props.compute),
+    };
+
     shouldComponentUpdate(nextProps, nextState) {
-      return !nextProps.pure || nextState.result!==this.state.result;
+      return !nextProps.pure || nextState.result !== this.state.result;
     }
 
     render() {
@@ -48,4 +47,5 @@ const createMemoizer = (memoizationFunction) => {
 export const MemoizeOne = createMemoizer(memoizeOne);
 export const MemoizeState = createMemoizer(memoizeState);
 
+/* eslint-disable */
 export default MemoizeState;
