@@ -3,11 +3,13 @@
 
 
 Component memoization for React! Based on [Dan Abramov's tweet](https://twitter.com/dan_abramov/status/965378278461755392) :)
-Could change the way you did `componentWillReceiveProps`, could remember how your React Tree grow, could make things better.
+Could change the way you did `componentWillReceiveProps`, could replace `getDerivedStateFromProps`, could make things better.
 
 > IE11+, React 15 and React 16.3 compatible.
 
 [![NPM](https://nodei.co/npm/react-memoize.png?downloads=true&stars=true)](https://nodei.co/npm/react-memoize/)
+
+### Memoize
 
 ```js
  import Memoize from 'react-memoize';
@@ -22,7 +24,7 @@ Could change the way you did `componentWillReceiveProps`, could remember how you
   { result => <Display>{result}</Display>}
   </Memoize>
 ```
-
+There is only __one prop__ - `compute`, all others will be passed inside.
 Memoize get `compute` function, add passes all the other props to it, streaming result to the render prop.
 
 If `pure` prop is set ReactMemoize wil behave as PureComponent, and not update children when could not. 
@@ -57,6 +59,55 @@ It is better to explain using example.
 This is like Redux without dispatching. State in context, selector aka mapStateToProps, and magic memoization in between.
 
 __See it in action ->__ https://codesandbox.io/s/xjz5y3wzrz 🛠
+
+## Flow
+`getDerivedStateFromProps` gives you ability to from a new state from props, while `componentDidUpdate` enables you to react 
+to the state changes.
+
+__MemoizedFlow__ is `getDerivedStateFromState`. Following example react to the state changes, allowing 
+to change ordering of rows and applies a pagination.
+
+"The Flow" is safe and performant way to form something from something, and rebuilt then the time calls.
+```js
+import {MemoizedFlow} from 'react-memoize';
+
+class SortablePageableTable extends Component {
+    state = {
+    page:0,
+    perPage:10,
+    filter: I => I
+    };
+    
+    onSortChange = (order) => this.setState(order)
+    onPageChange = page => this.setState(page);
+    
+    render () {
+    return (
+          <MemoizedFlow 
+          input={{...this.props, ...this.state}}
+          flow={[
+            // will react on rows or filter change
+            ({rows, filter}) => ({rows: list.filter(filter)}),
+            // will react on rows(from step1) change or order
+            ({rows, order}) => ({rows: list.slice().sort(order)}), // !! clone array before sort
+            // will react on rows and pagination changes
+            ({rows, page, perPage}) => ({rows: list.slice(page*perPage, (page+1)*perPage)}),
+            // will react on something else, not related
+            ({rain, bows}) => ({rainbows: rain+bows, rain: null, bows: null })
+            ]}
+          >
+            {output => <Table {...output} onSortChange={this.onSortChange} onPageChange={this.onPageChange}/>}
+          </MemoizedFlow>
+    }
+}
+
+<SortablePageableTable rows = {tableRows} />
+```
+First step is getting `input`, and each following is reading from a value provided before, spreading
+own result over it. Until the last step will be reached, and output will be provided to render prop.
+
+Each step is memoized, as usual, and will always reuse value from the steps before. 
+
 
 ## About
 
