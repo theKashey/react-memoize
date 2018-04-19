@@ -25,15 +25,15 @@ Could change the way you did `componentWillReceiveProps`, could replace `getDeri
 
 [![NPM](https://nodei.co/npm/react-memoize.png?downloads=true&stars=true)](https://nodei.co/npm/react-memoize/)
 
-- [Memoize](#Memoize) - to create declarative memoized selection.
-- [MemoizedFlow](#MemoizedFlow) - to create declarative memoized flow.
-- [MemoizeContext](#MemoizeContext) - to create memoized selector from context(or any Consumer).
-- [MemoizedRender](#MemoizedRender) - to create a render, memoized by a value provided. 
+- [Memoize](#memoize) - to create declarative memoized selection.
+- [MemoizedFlow](#flow) - to create declarative memoized flow.
+- [MemoizeContext](#memoizecontext) - to create memoized selector from context(or any Consumer).
+- [MemoizedRender](#memoizedrender) - to create a render, memoized by a value provided. 
 
-Memoize, MemoizedFlow, MemoizeContext accepts one or more functions to select or transform
-incoming data, and provide result to a function-as-child.
+Memoize, MemoizedFlow, MemoizeContext accepts one or more functions to select or transform incoming data, and provide result to a function-as-child.
 
 MemoizedRender is memoizing the function-as-child itself.
+
 ### Memoize
 
 ```js
@@ -53,37 +53,6 @@ There is only __one prop__ - `compute`, all others will be passed inside.
 Memoize get `compute` function, add passes all the other props to it, streaming result to the render prop.
 
 If `pure` prop is set ReactMemoize wil behave as PureComponent, and not update children when could not. 
-
-### MemoizeContext
-React memoize also provides component to __select__ and __memoize__ data from React16 context, or any other component 
-which will pass some values into renderProp.
-
-```js
-import {MemoizeContext} from 'react-memoize';
-
-<Context.Provider value={{prop1: 1, prop2: 2, prop3: 3}}>
-    <MemoizeContext consumer={Context.Consumer} selector={select}>
-      {values => <Render {...values} />}
-    </MemoizeContext>
-</Context.Provider>
-``` 
-`consumer` could be any "context"-compatible Component - React.context, create-react-context, unstated, react-copy-write.
-All the additional props will be passed down to consumer. 
-
-It is better to explain using example.
-```js
-<MemoizeContext consumer={Consumer} prop1={1} anotherProp={3} selector={select}> />
-
-// will result
-
-<Consumer prop1={1} anotherProp={3}>
-{ contextValues => <ReactMemoize {...contextValues} compute={selector}>...</ReactMemoize>}
-</Consumer>
-```
-
-This is like Redux without dispatching. State in context, selector aka mapStateToProps, and magic memoization in between.
-
-__See it in action ->__ https://codesandbox.io/s/xjz5y3wzrz 🛠
 
 ## Flow
 `getDerivedStateFromProps` gives you ability to from a new state from props, while `componentDidUpdate` enables you to react 
@@ -132,6 +101,37 @@ First step is getting `input`, and each following is reading from a value provid
 own result over it. Until the last step will be reached, and output will be provided to render prop.
 
 Each step is memoized, as usual, and will always reuse value from the steps before. 
+
+### MemoizeContext
+React memoize also provides component to __select__ and __memoize__ data from React16 context, or any other component 
+which will pass some values into renderProp.
+
+```js
+import {MemoizeContext} from 'react-memoize';
+
+<Context.Provider value={{prop1: 1, prop2: 2, prop3: 3}}>
+    <MemoizeContext consumer={Context.Consumer} selector={select}>
+      {values => <Render {...values} />}
+    </MemoizeContext>
+</Context.Provider>
+``` 
+`consumer` could be any "context"-compatible Component - React.context, create-react-context, unstated, react-copy-write.
+All the additional props will be passed down to consumer. 
+
+It is better to explain using example.
+```js
+<MemoizeContext consumer={Consumer} prop1={1} anotherProp={3} selector={select}> />
+
+// will result
+
+<Consumer prop1={1} anotherProp={3}>
+{ contextValues => <ReactMemoize {...contextValues} compute={selector}>...</ReactMemoize>}
+</Consumer>
+```
+
+This is like Redux without dispatching. State in context, selector aka mapStateToProps, and magic memoization in between.
+
+__See it in action ->__ https://codesandbox.io/s/xjz5y3wzrz 🛠
 
 # MemoizedRender
 MemoizedRender is mostly usable with Context API
