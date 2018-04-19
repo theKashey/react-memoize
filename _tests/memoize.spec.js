@@ -2,7 +2,7 @@ import React from 'react';
 import createContext from 'create-react-context';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Memoize, {MemoizeContext, MemoizedFlow} from '../src';
+import Memoize, {MemoizeContext, MemoizedFlow, MemoizedRender} from '../src';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -174,6 +174,67 @@ describe('React memoize', () => {
 
   });
 
+  describe('render', () => {
+    it('render with value', () => {
+
+      const Component = jest.fn().mockImplementation(({value}) => <div>comp - {value}</div>)
+
+      const wrapper = mount(
+        <MemoizedRender value={{key1: 1, key2: 2}}>
+          {values => <Component value={values.key1}/>}
+        </MemoizedRender>
+      );
+
+      expect(Component).toHaveBeenCalledTimes(1);
+      expect(wrapper.html()).toBe("<div>comp - 1</div>");
+
+      wrapper.setProps({value: {key1: 1, key2: 2}});
+      expect(Component).toHaveBeenCalledTimes(1);
+
+      wrapper.setProps({value: {key1: 1, key2: 3}});
+      expect(Component).toHaveBeenCalledTimes(1);
+
+      wrapper.setProps({value: {key1: 1, key2: 3, newKey: 1}});
+      expect(Component).toHaveBeenCalledTimes(1);
+
+      wrapper.setProps({value: {key1: 2, key2: 3, newKey: 1}});
+      expect(Component).toHaveBeenCalledTimes(2);
+      expect(wrapper.html()).toBe("<div>comp - 2</div>");
+
+    })
+
+    it('render with context', () => {
+
+      const Component = jest.fn().mockImplementation(({value}) => <div>comp - {value}</div>)
+      const Context = createContext('test');
+
+      const wrapper = mount(
+        <Context.Provider value={{key1: 1, key2: 2}}>
+          <MemoizedRender consumer={Context.Consumer}>
+            {values => <Component value={values.key1}/>}
+          </MemoizedRender>
+        </Context.Provider>
+      );
+
+      expect(Component).toHaveBeenCalledTimes(1);
+      expect(wrapper.html()).toBe("<div>comp - 1</div>");
+
+      wrapper.setProps({value: {key1: 1, key2: 2}});
+      expect(Component).toHaveBeenCalledTimes(1);
+
+      wrapper.setProps({value: {key1: 1, key2: 3}});
+      expect(Component).toHaveBeenCalledTimes(1);
+
+      wrapper.setProps({value: {key1: 1, key2: 3, newKey: 1}});
+      expect(Component).toHaveBeenCalledTimes(1);
+
+      wrapper.setProps({value: {key1: 2, key2: 3, newKey: 1}});
+      expect(Component).toHaveBeenCalledTimes(2);
+      expect(wrapper.html()).toBe("<div>comp - 2</div>");
+
+    })
+  });
+
   describe('flow', () => {
     it('the flow', () => {
       let lastState = 0;
@@ -214,7 +275,7 @@ describe('React memoize', () => {
       expect(spy2).toHaveBeenCalledTimes(1);
       expect(spy3).toHaveBeenCalledTimes(1);
 
-      wrapper.setProps({input:{...input, page:1}});
+      wrapper.setProps({input: {...input, page: 1}});
       expect(wrapper.text()).toBe('5');
       expect(lastState).toEqual({list: [2, 3], page: 1, sortOrder: 1, filter: null});
 
@@ -232,7 +293,7 @@ describe('React memoize', () => {
         expect(spy3).toHaveBeenCalledTimes(2);
       }
 
-      wrapper.setProps({input:{...input, filter: x => x%2}});
+      wrapper.setProps({input: {...input, filter: x => x % 2}});
       expect(wrapper.text()).toBe('4');
       expect(lastState).toEqual({list: [1, 3], page: 0, sortOrder: 1, filter: null});
 
@@ -240,7 +301,7 @@ describe('React memoize', () => {
       expect(spy2).toHaveBeenCalledTimes(2);
       expect(spy3).toHaveBeenCalledTimes(3);
 
-      wrapper.setProps({input:{...input}});
+      wrapper.setProps({input: {...input}});
       expect(wrapper.text()).toBe('3');
       expect(lastState).toEqual({list: [1, 2], page: 0, sortOrder: 1, filter: null});
 
@@ -248,7 +309,7 @@ describe('React memoize', () => {
       expect(spy2).toHaveBeenCalledTimes(3);
       expect(spy3).toHaveBeenCalledTimes(4);
 
-      wrapper.setProps({input:{...input, sortOrder: -1 }});
+      wrapper.setProps({input: {...input, sortOrder: -1}});
       expect(wrapper.text()).toBe('11');
       expect(lastState).toEqual({list: [6, 5], page: 0, sortOrder: -1, filter: null});
 
@@ -257,7 +318,7 @@ describe('React memoize', () => {
       expect(spy3).toHaveBeenCalledTimes(5);
 
       // try reset flow
-      wrapper.setProps({input:{...input, sortOrder: -1 }, flow:[]});
+      wrapper.setProps({input: {...input, sortOrder: -1}, flow: []});
       expect(wrapper.text()).toBe('11');
       expect(lastState).toEqual({list: [6, 5], page: 0, sortOrder: -1, filter: null});
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Memoize from '../src';
+import Memoize, {MemoizedRender} from '../src';
 
 
 const heavyFunction = (list, count) => {
@@ -77,5 +77,50 @@ class Test1 extends Component {
   }
 }
 
+
+class TestMemoizedRender extends Component {
+  state = {
+    count: 1,
+    generation: 0,
+    list: new Array(50).fill(1).map((x, index) => index)
+  };
+
+  componentDidMount() {
+    setInterval(() => this.setState({generation: this.state.generation + 1}), 1000);
+  }
+
+  decC = () => this.setState(({count}) => ({count: count - 1}));
+  incC = () => this.setState(({count}) => ({count: count + 1}));
+
+  render() {
+    return (
+      <div>
+        Valuable:
+        <button onClick={this.decC}>-</button>{this.state.count}
+        <button onClick={this.incC}>+</button>
+        <span> gen : {this.state.generation}</span>
+
+        <MemoizedRender
+          value={this.state}
+        >{state => {
+          const {list, time} = heavyFunction(state.list, state.count);
+          return (
+            <div>
+              render #{this.state.generation}, updated {Math.round((Date.now() - time) / 1000)} seconds ago
+              <ul>
+                {list.map(x => <li key={x}>{x}</li>)}
+              </ul>
+            </div>
+          )
+        }
+        }
+        </MemoizedRender>
+      </div>
+    );
+  }
+}
+
+
 storiesOf('Memoize', module)
   .add('example', () => <Test1/>)
+  .add('MemoizedRender', () => <TestMemoizedRender/>)

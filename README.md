@@ -1,14 +1,32 @@
-# react-memoize  🤯 🧠 🧙
-[![CircleCI status](https://img.shields.io/circleci/project/github/theKashey/react-memoize/master.svg?style=flat-square)](https://circleci.com/gh/theKashey/react-focus-lock/tree/master)
+<div align="center">
+  <h1>react-memoize  🤯 🧠</h1>
+  <br/>
+  <img src="./assets/logo.png" alt="memoize" height="187" align="center">
+  <br/>
+  [![CircleCI status](https://img.shields.io/circleci/project/github/theKashey/react-memoize/master.svg?style=flat-square)](https://circleci.com/gh/theKashey/react-focus-lock/tree/master)
+</div>  
 
+7kb library to change the world. It is not fast, but it is MUCH faster that VDOM tree comparison you will face in case of render trashing.  
+Uses [memoize-state](https://github.com/theKashey/memoize-state) underneath, providing the same magic for `get` as [immer](https://github.com/mweststrate/immer) provided to `set`. 
 
-Component memoization for React! Based on [Dan Abramov's tweet](https://twitter.com/dan_abramov/status/965378278461755392) :)
+__Just write code as you want. It it will be properly memoized__.
+
+This is declarative component memoization for React! Based on [Dan Abramov's tweet](https://twitter.com/dan_abramov/status/965378278461755392)
 Could change the way you did `componentWillReceiveProps`, could replace `getDerivedStateFromProps`, could make things better.
 
 > IE11+, React 15 and React 16.3 compatible.
 
 [![NPM](https://nodei.co/npm/react-memoize.png?downloads=true&stars=true)](https://nodei.co/npm/react-memoize/)
 
+- [Memoize](#Memoize) - to create declarative memoized selection.
+- [MemoizedFlow](#MemoizedFlow) - to create declarative memoized flow.
+- [MemoizeContext](#MemoizeContext) - to create memoized selector from context(or any Consumer).
+- [MemoizedRender](#MemoizedRender) - to create a render, memoized by a value provided. 
+
+Memoize, MemoizedFlow, MemoizeContext accepts one or more functions to select or transform
+incoming data, and provide result to a function-as-child.
+
+MemoizedRender is memoizing the function-as-child itself.
 ### Memoize
 
 ```js
@@ -17,9 +35,9 @@ Could change the way you did `componentWillReceiveProps`, could replace `getDeri
  <Memoize
    prop1 = "theKey"
    state = {this.state}
-   
-   compute={({prop1, state}) => heavyComputation(state[prop1])}
-   pure
+   // values from above will be provided to compute function
+   compute={({prop1, state}) => heavyComputation(state[prop1])} // Memoize tracks WHAT you are doing 
+   pure // Memoize will be a pure component itself
   >
   { result => <Display>{result}</Display>}
   </Memoize>
@@ -42,7 +60,7 @@ import {MemoizeContext} from 'react-memoize';
     </MemoizeContext>
 </Context.Provider>
 ``` 
-`consumer` could be any "context"-compatible Component - React.context, create-react-context or unstated.
+`consumer` could be any "context"-compatible Component - React.context, create-react-context, unstated, react-copy-write.
 All the additional props will be passed down to consumer. 
 
 It is better to explain using example.
@@ -108,6 +126,42 @@ own result over it. Until the last step will be reached, and output will be prov
 
 Each step is memoized, as usual, and will always reuse value from the steps before. 
 
+# MemoizedRender
+MemoizedRender is mostly usable with Context API
+```js
+import {MemoizedRender} from 'react-memoize';
+
+<Context.Provider value={{prop1: 1, prop2: 2, prop3: 3}}>
+    <MemoizedRender consumer={Context.Consumer}>
+      {values => <Render {...select(values)} />}
+    </MemoizeContext>
+</Context.Provider>
+```
+Or, the better example (from [react-copy-write](https://github.com/aweary/react-copy-write#consuming-state))
+```js
+const UserAvatar = ({ id }) => (
+  <MemoizedRender consumer={State.Consumer}>
+    {state => (
+      <div className="avatar">
+        <img src={state.users[id].avatar.src} />
+      </div>
+    )}
+  </MemoizedRender>
+);
+```
+While `react-copy-write` declares that _ The problem with this is that whenever any value in state changes, UserAvatar will be re-rendered, even though it's only using a single property from a single, nested object._
+This example will work, as long MemoizedRender will track used keys, and perform update only when necessary.
+
+It is also possible to provide `value` as a prop
+```js
+<MemoizedRender value={originalValue}>
+  {values => <Render {...select(values)} />}
+</MemoizeContext>
+```
+
+MemoizedRender __memoizes "render" as a whole__. This is __absolute pure component__. Be carefull. Might be not 100% compatible with async rendering
+if you pass values you were provided down the tree, as long __async accessed keys are not tracked__.
+Thus - MemoizedRender may not react to changes in them.
 
 ## About
 

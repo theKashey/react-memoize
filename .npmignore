@@ -5,6 +5,7 @@ circle.yml
 stories/
 _tests/
 src/
+assets/
 
 .DS_Store
 .size-limit
