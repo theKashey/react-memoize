@@ -3,8 +3,15 @@
   <br/>
   <img src="./assets/logo.png" alt="memoize" height="187" align="center">
   <br/>
-  [![CircleCI status](https://img.shields.io/circleci/project/github/theKashey/react-memoize/master.svg?style=flat-square)](https://circleci.com/gh/theKashey/react-focus-lock/tree/master)
+  <br/>
+  <a href="https://circleci.com/gh/theKashey/react-memoize/tree/master">
+     <img src="https://img.shields.io/circleci/project/github/theKashey/react-memoize/master.svg?style=flat-square)" alt="Build status">
+  </a>
+  <br/>
+  <br/>
+  <br/>  
 </div>  
+
 
 7kb library to change the world. It is not fast, but it is MUCH faster that VDOM tree comparison you will face in case of render trashing.  
 Uses [memoize-state](https://github.com/theKashey/memoize-state) underneath, providing the same magic for `get` as [immer](https://github.com/mweststrate/immer) provided to `set`. 
