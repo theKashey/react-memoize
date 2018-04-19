@@ -141,7 +141,7 @@ import {MemoizedRender} from 'react-memoize';
 <Context.Provider value={{prop1: 1, prop2: 2, prop3: 3}}>
     <MemoizedRender consumer={Context.Consumer}>
       {values => <Render {...select(values)} />}
-    </MemoizeContext>
+    </MemoizedRender>
 </Context.Provider>
 ```
 Or, the better example (from [react-copy-write](https://github.com/aweary/react-copy-write#consuming-state))
