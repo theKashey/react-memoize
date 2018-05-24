@@ -12,6 +12,8 @@ export class MemoizedFlow extends React.Component {
     /* eslint-enable */
     flow: PropTypes.arrayOf(PropTypes.func).isRequired,
     children: PropTypes.func.isRequired,
+
+    pure: PropTypes.bool
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -25,7 +27,7 @@ export class MemoizedFlow extends React.Component {
   };
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextState.value !== this.state.value;
+    return !this.props.pure || nextState.value !== this.state.value;
   }
 
   render() {
