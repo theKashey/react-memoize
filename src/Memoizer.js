@@ -18,12 +18,11 @@ const createMemoizer = (memoizationFunction) => {
     };
 
     static getDerivedStateFromProps(props, state) {
-      const { calculateResult } = state;
       const { children, compute, pure, ...rest } = props;
       const result = state.calculateResult(rest);
-      if(result !== state.result) {
+      if (result !== state.result) {
         return {
-          result
+          result,
         };
       }
       return null;

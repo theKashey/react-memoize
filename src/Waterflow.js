@@ -13,7 +13,11 @@ export class MemoizedFlow extends React.Component {
     flow: PropTypes.arrayOf(PropTypes.func).isRequired,
     children: PropTypes.func.isRequired,
 
-    pure: PropTypes.bool
+    pure: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    pure: false,
   };
 
   static getDerivedStateFromProps(props, state) {
