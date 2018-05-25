@@ -7,13 +7,22 @@
   <a href="https://circleci.com/gh/theKashey/react-memoize/tree/master">
      <img src="https://img.shields.io/circleci/project/github/theKashey/react-memoize/master.svg?style=flat-square)" alt="Build status">
   </a>
+  
+  <a href="https://codecov.io/github/thekashey/react-memoize">
+   <img src="https://img.shields.io/codecov/c/github/thekashey/react-memoize.svg?style=flat-square" />
+  </a>
+    
+  <a href="https://www.npmjs.com/package/react-memoize">
+   <img src="https://img.shields.io/npm/v/react-memoize.svg?style=flat-square" />
+  </a>
+  
   <br/>
   <br/>
   <br/>  
 </div>  
 
 
-7kb library to change the world. It is not fast, but it is MUCH faster that VDOM tree comparison you will face in case of render trashing.  
+7kb library to change the world. It is not fast, but it is MUCH react-memoizer that VDOM tree comparison you will face in case of render trashing.  
 Uses [memoize-state](https://github.com/theKashey/memoize-state) underneath, providing the same magic for `get` as [immer](https://github.com/mweststrate/immer) provided to `set`. 
 
 __Just write code as you want. It it will be properly memoized__.
