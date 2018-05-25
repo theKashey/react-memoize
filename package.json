@@ -7,6 +7,7 @@
   "scripts": {
     "build": "babel src -d dist",
     "test": "jest --no-cache",
+    "test:ci": "jest --no-cache --coverage",
     "prepublish": "npm run build",
     "lint": "eslint src tests",
     "lint:fix": "eslint src tests --fix",

@@ -10,4 +10,4 @@ test:
     - npm run size
 
   override:
-    - npm run test --coverage && codecov
+    - npm run test:ci && codecov
