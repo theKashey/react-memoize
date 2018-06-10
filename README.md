@@ -32,7 +32,7 @@ Could change the way you did `componentWillReceiveProps`, could replace `getDeri
 
 > IE11+, React 15 and React 16.3 compatible.
 
-[![NPM](https://nodei.co/npm/react-memoize.png?downloads=true&stars=true)](https://nodei.co/npm/react-memoize/)
+[![NPM](https://nodei.co/npm/react-memoize.png?downloads=true&stars=true)](https://nodei.co/npm/react-memoize/) [![Greenkeeper badge](https://badges.greenkeeper.io/theKashey/react-memoize.svg)](https://greenkeeper.io/)
 
 - [Memoize](#memoize) - to create declarative memoized selection.
 - [MemoizedFlow](#flow) - to create declarative memoized flow.
