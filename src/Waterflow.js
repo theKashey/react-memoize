@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import memoizeState from 'memoize-state';
-import polyfill from 'react-lifecycles-compat';
+import { polyfill } from 'react-lifecycles-compat';
 
 const genFlow = flow => flow.map(fn => memoizeState(fn));
 
@@ -27,6 +27,7 @@ export class MemoizedFlow extends React.Component {
   }
 
   state = {
+    // eslint-disable-next-line react/no-unused-state
     flow: genFlow(this.props.flow),
   };
 
