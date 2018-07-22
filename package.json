@@ -1,6 +1,6 @@
 {
   "name": "react-memoize",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "description": "Memoized mapStateToProps on component level",
   "main": "dist/index.js",
   "types": "react-memoize.d.ts",
