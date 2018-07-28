@@ -21,9 +21,14 @@
   <br/>  
 </div>  
 
+7kb MobX-level memoization library, which tracks all the arguments you are __really__ depends on.
+- It is not so fast, as reselect, but could handle more cases, and works out of the box. 
+- It is not so fast, but much faster, than _VDOM tree comparison_ you will face in case of render trashing.  
+- It contain 3 types of memoziation to handle all possible cases.
 
-7kb library to change the world. It is not fast, but it is MUCH react-memoizer that VDOM tree comparison you will face in case of render trashing.  
 Uses [memoize-state](https://github.com/theKashey/memoize-state) underneath, providing the same magic for `get` as [immer](https://github.com/mweststrate/immer) provided to `set`. 
+
+Works fine in all browsers including IE11.
 
 __Just write code as you want. It it will be properly memoized__.
 
