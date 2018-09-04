@@ -5592,12 +5592,12 @@ memoize-one@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-3.0.1.tgz#7b599850bb41be8beed305f4eefd963c8cea9a0a"
 
-memoize-state@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/memoize-state/-/memoize-state-2.0.0.tgz#4489596728f8f06c40dcdc180c6d54ad8783006c"
+memoize-state@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/memoize-state/-/memoize-state-2.0.2.tgz#0a815b6f3e140f8c2d426aa7f9c0920c8ab5dfd6"
   dependencies:
     function-double "^1.0.4"
-    proxyequal "^2.0.0"
+    proxyequal "^2.0.1"
 
 memory-fs@^0.4.0, memory-fs@^0.4.1, memory-fs@~0.4.1:
   version "0.4.1"
@@ -6771,9 +6771,9 @@ proxy-addr@~2.0.2:
     forwarded "~0.1.2"
     ipaddr.js "1.6.0"
 
-proxyequal@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/proxyequal/-/proxyequal-2.0.0.tgz#d0f971810ee21bb71414430f828dc461a5190e97"
+proxyequal@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/proxyequal/-/proxyequal-2.0.1.tgz#e568952784e2879d6ddc74c5c060eab191e52fb2"
   dependencies:
     search-trie "^1.0.0"
 

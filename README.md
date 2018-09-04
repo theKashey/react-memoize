@@ -16,6 +16,10 @@
    <img src="https://img.shields.io/npm/v/react-memoize.svg?style=flat-square" />
   </a>
   
+  <a href="https://greenkeeper.io/">
+     <img src="https://badges.greenkeeper.io/theKashey/react-memoize.svg" />
+  </a>
+  
   <br/>
   <br/>
   <br/>  
@@ -36,8 +40,6 @@ This is declarative component memoization for React! Based on [Dan Abramov's twe
 Could change the way you did `componentWillReceiveProps`, could replace `getDerivedStateFromProps`, could make things better.
 
 > IE11+, React 15 and React 16.3 compatible.
-
-[![NPM](https://nodei.co/npm/react-memoize.png?downloads=true&stars=true)](https://nodei.co/npm/react-memoize/) [![Greenkeeper badge](https://badges.greenkeeper.io/theKashey/react-memoize.svg)](https://greenkeeper.io/)
 
 - [Memoize](#memoize) - to create declarative memoized selection.
 - [MemoizedFlow](#flow) - to create declarative memoized flow.
