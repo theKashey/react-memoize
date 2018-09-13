@@ -63,7 +63,7 @@
     "package-self": "^1.1.1",
     "react": "16.5.1",
     "react-dom": "^16.5.1",
-    "react-test-renderer": "^16.4.0",
+    "react-test-renderer": "^16.5.1",
     "size-limit": "^0.18.1"
   },
   "homepage": "https://github.com/theKashey/react-memoize#readme",
