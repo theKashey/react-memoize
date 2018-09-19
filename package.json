@@ -61,7 +61,7 @@
     "eslint-plugin-react": "^7.3.0",
     "jest": "^23.0.0",
     "package-self": "^1.1.1",
-    "react": "16.4.0",
+    "react": "16.5.2",
     "react-dom": "^16.4.0",
     "react-test-renderer": "^16.4.0",
     "size-limit": "^0.18.1"
