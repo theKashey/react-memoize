@@ -71,7 +71,7 @@ Memoize get `compute` function, add passes all the other props to it, streaming 
 If `pure` prop is set ReactMemoize wil behave as PureComponent, and not update children when could not. 
 
 ## Flow
-`getDerivedStateFromProps` gives you ability to from a new state from props, while `componentDidUpdate` enables you to react 
+`getDerivedStateFromProps` gives you ability to derive a new state from props, while `componentDidUpdate` enables you to react 
 to the state changes.
 
 __MemoizedFlow__ is `getDerivedStateFromState`. Following example react to the state changes, allowing 
