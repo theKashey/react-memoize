@@ -1,7 +1,7 @@
 import React from 'react';
 import createContext from 'create-react-context';
 import Enzyme, {mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16.3';
+import Adapter from 'enzyme-adapter-react-16';
 import Memoize, {MemoizeContext, MemoizedFlow, MemoizedRender} from '../src';
 
 Enzyme.configure({adapter: new Adapter()});

@@ -50,6 +50,10 @@ Memoize, MemoizedFlow, MemoizeContext accepts one or more functions to select or
 
 MemoizedRender is memoizing the function-as-child itself.
 
+> What is the difference between React-memoize and React.memo? Memo is a "PureComponent", Memoize is more about 
+accurate memoization based on the real props consumption.
+React-memoize is about "calculation" memoization
+
 ### Memoize
 
 ```js
