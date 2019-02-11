@@ -70,7 +70,7 @@
   "dependencies": {
     "memoize-one": "^3.0.1",
     "memoize-state": "^2.0.2",
-    "prop-types": "15.6.2",
+    "prop-types": "15.7.1",
     "react-lifecycles-compat": "^3.0.4"
   }
 }
