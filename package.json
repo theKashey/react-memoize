@@ -62,7 +62,7 @@
     "jest": "^23.0.0",
     "package-self": "^1.1.1",
     "react": "^16.8.2",
-    "react-dom": "^16.6.0",
+    "react-dom": "^16.8.2",
     "react-test-renderer": "^16.4.0",
     "size-limit": "^0.21.1"
   },
