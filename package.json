@@ -52,7 +52,7 @@
     "codecov": "^3.0.2",
     "create-react-context": "^0.2.1",
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-adapter-react-16": "^1.9.1",
     "eslint": "^4.2.0",
     "eslint-config-airbnb": "16.1.0",
     "eslint-plugin-import": "^2.7.0",
