@@ -7022,10 +7022,10 @@ mem@^4.0.0:
     mimic-fn "^1.0.0"
     p-is-promise "^1.1.0"
 
-memoize-one@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-3.0.1.tgz#7b599850bb41be8beed305f4eefd963c8cea9a0a"
-  integrity sha1-e1mYULtBvovu0wX07v2WPIzqmgo=
+memoize-one@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.0.3.tgz#2f2ec6f21df48f41caa9f5e873b3dd09650d1d38"
+  integrity sha512-hSFNx1nYJZ1fUmhBa1ZNI5ZEKsWGks6yp3yX0v2hHOF7D2VJw+fRkzkoA4djB5itv+Nk0piLOelgiPPKIVBBqQ==
 
 memoize-state@^2.0.2:
   version "2.0.2"
