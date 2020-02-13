@@ -3139,6 +3139,14 @@ cosmiconfig@^5.0.0, cosmiconfig@^5.0.7:
     js-yaml "^3.9.0"
     parse-json "^4.0.0"
 
+crc-32@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/crc-32/-/crc-32-1.2.0.tgz#cb2db6e29b88508e32d9dd0ec1693e7b41a18208"
+  integrity sha512-1uBwHxF+Y/4yF5G48fwnKq6QsIXheor3ZLPT80yGBV1oEUwpPojlEhQbWKVw1VwcTQyMGHK1/XMmTjmlsmTTGA==
+  dependencies:
+    exit-on-epipe "~1.0.1"
+    printj "~1.1.0"
+
 create-ecdh@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.0.tgz#888c723596cdf7612f6498233eebd7a35301737d"
@@ -4405,6 +4413,11 @@ exenv@^1.2.0, exenv@^1.2.1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
   integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
+
+exit-on-epipe@~1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/exit-on-epipe/-/exit-on-epipe-1.0.1.tgz#0bdd92e87d5285d267daa8171d0eb06159689692"
+  integrity sha512-h2z5mrROTxce56S+pnvAV890uu7ls7f1kEvVGJbw1OlFH3/mlJ5bkXu0KRyW94v37zzHPiUd55iLn3DA7TjWpw==
 
 exit@^0.1.2:
   version "0.1.2"
@@ -7027,13 +7040,13 @@ memoize-one@^3.0.1:
   resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-3.0.1.tgz#7b599850bb41be8beed305f4eefd963c8cea9a0a"
   integrity sha1-e1mYULtBvovu0wX07v2WPIzqmgo=
 
-memoize-state@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/memoize-state/-/memoize-state-2.0.2.tgz#0a815b6f3e140f8c2d426aa7f9c0920c8ab5dfd6"
-  integrity sha512-3VZxD9NEzh3h1kkwEh1c/vmCye8LqBpPz3884l8mGGD2oupJzh9y1mAjdVQmaSZK/EDN43FUIfW82fBxppx8NQ==
+memoize-state@^2.0.14:
+  version "2.0.14"
+  resolved "https://registry.yarnpkg.com/memoize-state/-/memoize-state-2.0.14.tgz#9c70a43e13258dc69a0a8880d789deaf332c90c7"
+  integrity sha512-iVhCpPlKYgZ4d8uUqj/H2ZY2V9T1UjOsX/9kanxCJRgc6JIbV0VYfSEzhUc9qot4+UeTdsTaQ6SYHBRIAEiAkA==
   dependencies:
     function-double "^1.0.4"
-    proxyequal "^2.0.1"
+    proxyequal "^2.1.0"
 
 memory-fs@^0.4.0, memory-fs@^0.4.1, memory-fs@~0.4.1:
   version "0.4.1"
@@ -8723,6 +8736,11 @@ pretty-format@^23.0.1:
     ansi-regex "^3.0.0"
     ansi-styles "^3.2.0"
 
+printj@~1.1.0:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/printj/-/printj-1.1.2.tgz#d90deb2975a8b9f600fb3a1c94e3f4c53c78a222"
+  integrity sha512-zA2SmoLaxZyArQTOPj5LXecR+RagfPSU5Kw1qP+jkWeNlrq+eJZyY2oS68SU1Z/7/myXM4lo9716laOFAVStCQ==
+
 private@^0.1.6, private@^0.1.7, private@~0.1.5:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
@@ -8802,12 +8820,13 @@ proxy-addr@~2.0.4:
     forwarded "~0.1.2"
     ipaddr.js "1.8.0"
 
-proxyequal@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/proxyequal/-/proxyequal-2.0.1.tgz#e568952784e2879d6ddc74c5c060eab191e52fb2"
-  integrity sha512-aUbQcpFhX6R4JMDx3GoyR6MfsS8FsHt++qIx9aUuzPQNYboP4l1W+X2xDqpBS0VwIJ0ipI5AbPBiee8zkfxMsQ==
+proxyequal@^2.1.0:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/proxyequal/-/proxyequal-2.1.2.tgz#396189698664c25129dd2c8cea773ada3f274023"
+  integrity sha512-q8GwkAYQOptCKejQ9uYgjxy6T2jS1b5qxVIhq+m5gYiPnJqemQebnf5sNAm7r9/zm30CGnjdJxG/eNahLFp+pA==
   dependencies:
-    search-trie "^1.0.0"
+    crc-32 "^1.2.0"
+    search-trie "^1.1.0"
 
 prr@~1.0.1:
   version "1.0.1"
@@ -9713,10 +9732,10 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
-search-trie@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/search-trie/-/search-trie-1.0.0.tgz#9529e727a2267a5c9ef0c6910ef5a6e2de9bf188"
-  integrity sha512-VAb03XhLoxiA9/XFE/hoJCtI49TRXITk2OpPfebH4ZdJv2FPAowbYGLnfO0n0eiuYp4tP8zbq+KOm0T9jQEPRw==
+search-trie@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/search-trie/-/search-trie-1.1.0.tgz#0060185cbf44933d979e39f01795b3265a752b2c"
+  integrity sha512-6yOUbl5+j4HdFYLPAq6xZZynNkCUVw55hFz/yl54aFWHOh03PQue8rqbkt2k6gywp3jETcNnncZUfgrF6GS48A==
 
 "semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@^5.4.1:
   version "5.5.0"
