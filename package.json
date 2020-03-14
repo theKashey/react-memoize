@@ -69,7 +69,7 @@
   "homepage": "https://github.com/theKashey/react-memoize#readme",
   "dependencies": {
     "memoize-one": "^3.0.1",
-    "memoize-state": "^2.0.2",
+    "memoize-state": "^2.0.15",
     "prop-types": "15.6.2",
     "react-lifecycles-compat": "^3.0.4"
   }
